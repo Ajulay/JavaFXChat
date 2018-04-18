@@ -1,0 +1,23 @@
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<VBox fx:controller="com.ajulay.Controller"
+      xmlns:fx="http://javafx.com/fxml" alignment="center" stylesheets="style.css">
+    <HBox fx:id="authPanel" >
+        <TextField HBox.hgrow ="ALWAYS" fx:id="loginField" promptText="login" focusTraversable="false" />
+        <PasswordField HBox.hgrow ="ALWAYS" fx:id="passField" promptText="password" focusTraversable="false"/>
+        <Button fx:id="authBn"  text ="AUTHORISATION..." onAction="#sendAuth" styleClass="my-btn-style" disable="true" />
+    </HBox>        
+    
+    <TextArea editable="false" fx:id="jta"  VBox.vgrow="ALWAYS" focusTraversable="false"/>
+  
+    <HBox fx:id="msgPanel" visible="false" managed="false">
+        <TextField fx:id="jtf" promptText="Enter your message " HBox.hgrow="ALWAYS" focusTraversable="false" onAction="#sendMsg" />
+       <Button fx:id="sendMsgBn"  styleClass="my-btn-style" text ="SEND..." onAction="#sendMsg" disable="true"/>
+    </HBox>
+
+</VBox>
