@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="globParent" alignment="center" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.agapov.RegistrationController">
+    <TextField fx:id="login" maxWidth="200" promptText="login">
+      <VBox.margin>
+         <Insets bottom="10.0" />
+      </VBox.margin></TextField>
+    <TextField fx:id="password" maxWidth="200" promptText="password">
+    <VBox.margin>
+        <Insets bottom="10.0" />
+    </VBox.margin></TextField>
+    <TextField fx:id="nick" maxWidth="200" promptText="nickname">
+        <VBox.margin>
+            <Insets bottom="10.0" />
+        </VBox.margin></TextField>
+
+    <Button text="SIGN UP..." prefWidth="200" onAction="#tryToRegister"  >
+      <VBox.margin>
+         <Insets bottom="10.0" />
+      </VBox.margin></Button>
+
+    <Label fx:id="result" alignment="CENTER" maxWidth="300" />
+</VBox>
