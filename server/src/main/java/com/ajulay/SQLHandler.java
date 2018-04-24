@@ -22,9 +22,9 @@ public static void connect() throws ClassNotFoundException, SQLException {
             String nick = "";
 
             if (rs.next()) {
-               // System.out.println("j");
+
                 nick = rs.getString(1);
-                //System.out.println(nick);
+                
                 return nick;
             }
 

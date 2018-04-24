@@ -3,11 +3,15 @@ package com.ajulay;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.DataInputStream;
@@ -19,6 +23,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable{
+
     private Socket socket;
     private DataInputStream in;
     private DataOutputStream out;
@@ -32,7 +37,7 @@ public class Controller implements Initializable{
     public TextField passField;
     public HBox authPanel, msgPanel;
     public Button sendMsgBn, authBn;
-
+    public Button regBn;
 
 
     public void setAuthorized(boolean authorized) {
@@ -60,7 +65,7 @@ public class Controller implements Initializable{
             socket = new Socket("localhost", 8189);
             out = new DataOutputStream(socket.getOutputStream());
             in = new DataInputStream(socket.getInputStream()) ;
-            // bn disactivating...
+
             loginField.textProperty().addListener((observable, oldValue, newValue) -> {
                 if (!newValue.isEmpty()){
                     authBn.setDisable(false);}
@@ -158,6 +163,19 @@ public void sendMsg(){
             loginField.clear();
             passField.clear();
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void registerBtn() {
+        try {
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/registration.fxml"));
+            Parent root = loader.load();
+            stage.setTitle("Chat: Sign up...");
+            stage.setScene(new Scene(root, 400, 240));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
         }

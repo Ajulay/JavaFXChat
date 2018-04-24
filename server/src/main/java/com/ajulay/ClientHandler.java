@@ -5,9 +5,6 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
-/**
- * Created by ajulay on 20.03.2018.
- */
 public class ClientHandler {
     private Server server;
     private Socket socket;
@@ -28,25 +25,30 @@ public class ClientHandler {
                 try {
                     while (true) {
                         String str = in.readUTF();
-                        if (str.startsWith("/auth ")) {
-                            String[] ss = str.split("\\s");
-                            String nick = SQLHandler.getNickByLoginPass(ss[1], ss[2]);
+                        if (str.startsWith("/")) {
+                            if (str.startsWith("/auth ")) {
+                                String[] ss = str.split("\\s");
+                                String nick = SQLHandler.getNickByLoginPass(ss[1], ss[2]);
 
-                            if (nick != null) {
-                                if (server.isNickIsBusy(nick)) {
-                                    out.writeUTF("Your nick has already activated...");
-                                    continue;
-                                }
+                                if (nick != null) {
+                                    if (server.isNickIsBusy(nick)) {
+                                        out.writeUTF("Your nick has already activated...");
+                                        continue;
+                                    }
 
-                                out.writeUTF("/authok " + nick);
-                                this.nick = nick;
-                                server.subscribe(this);
-                                break;
-                            } else
-                                out.writeUTF("Wrong login/password...");
-                        }
+                                    out.writeUTF("/authok " + nick);
+                                    this.nick = nick;
+                                    server.subscribe(this);
+                                    break;
+                                } else
+                                    out.writeUTF("Wrong login/password...");
+                            }
+                            if (str.startsWith("/registration ")){
+                                out.writeUTF("/regok");
+                            }
+                        }else
+                            out.writeUTF("Wrong data...");
                     }
-
 
                     while (true) {
                         String str = in.readUTF();
