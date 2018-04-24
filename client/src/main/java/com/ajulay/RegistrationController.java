@@ -34,7 +34,7 @@ public class RegistrationController {
             }
         } catch (IOException e) {
             System.out.println("reading error...");
-            // e.printStackTrace();
+            
         } finally {
 
             try {
