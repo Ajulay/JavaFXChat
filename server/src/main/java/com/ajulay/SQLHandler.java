@@ -2,9 +2,6 @@ package com.ajulay;
 
 import java.sql.*;
 
-/**
- * Created by ajulay on 21.03.2018.
- */
 public class SQLHandler {
 private static Connection conn;
 private static Statement stmt;
@@ -22,9 +19,9 @@ public static void connect() throws ClassNotFoundException, SQLException {
             String nick = "";
 
             if (rs.next()) {
-               // System.out.println("j");
+
                 nick = rs.getString(1);
-                //System.out.println(nick);
+                
                 return nick;
             }
 
