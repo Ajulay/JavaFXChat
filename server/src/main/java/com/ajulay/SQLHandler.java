@@ -21,7 +21,7 @@ public static void connect() throws ClassNotFoundException, SQLException {
             if (rs.next()) {
 
                 nick = rs.getString(1);
-                
+
                 return nick;
             }
 
