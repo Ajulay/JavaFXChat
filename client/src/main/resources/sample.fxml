@@ -11,7 +11,7 @@
         <TextField HBox.hgrow ="ALWAYS" fx:id="loginField" promptText="login" focusTraversable="false" />
         <PasswordField HBox.hgrow ="ALWAYS" fx:id="passField" promptText="password" focusTraversable="false"/>
         <Button fx:id="authBn"  text ="AUTHORISATION..." onAction="#sendAuth" styleClass="my-btn-style" disable="true" />
-        <Button fx:id="regBn" text="SIGN UP..." onAction="#registerBtn"  styleClass="my-btn-style" disable="true"/>
+        <Button fx:id="regBn" text="SIGN UP..." onAction="#registerBtn"  styleClass="my-btn-style" disable="false"/>
     </HBox>        
     
     <TextArea editable="false" fx:id="jta"  VBox.vgrow="ALWAYS" focusTraversable="false"/>
