@@ -67,17 +67,20 @@ public class Controller implements Initializable{
             in = new DataInputStream(socket.getInputStream()) ;
 
             loginField.textProperty().addListener((observable, oldValue, newValue) -> {
-                if (!newValue.isEmpty()){
-                    authBn.setDisable(false);}
-                else
+                if (!newValue.isEmpty()) {
+                    authBn.setDisable(false);
+                } else
                     authBn.setDisable(true);
             });
 
-            jtf.textProperty().addListener((observable, oldValue, newValue) -> {
-               if (!newValue.isEmpty()){
-                   sendMsgBn.setDisable(false);}
-                else
-                   sendMsgBn.setDisable(true);
+            jtf.textProperty().addListener(new ChangeListener<String>() {
+                @Override
+                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                    if (!newValue.isEmpty()) {
+                        sendMsgBn.setDisable(false);
+                    } else
+                        sendMsgBn.setDisable(true);
+                }
             });
 
         Thread t = new Thread(new Runnable() {

@@ -16,6 +16,7 @@
 
 .text-field{
 -fx-border-width: 2px;
--fx-border-color: black;
+-fx-border-color: linear-gradient(#f00 , #000 );
 -fx-border-radius:5px;
+-fx-font-color: red;/*not work*/
 }
